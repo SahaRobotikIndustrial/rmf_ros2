@@ -251,8 +251,9 @@ public:
       // fleet driver anyway.
       if (wp.graph_index())
       {
+        location.index=_travel_info.graph->get_waypoint(*wp.graph_index()).index();
         location.level_name =
-          _travel_info.graph->get_waypoint(*wp.graph_index()).get_map_name();
+        _travel_info.graph->get_waypoint(*wp.graph_index()).get_map_name() + " " + *_travel_info.graph->get_waypoint(*wp.graph_index()).name();
       }
 
       _current_path_request.path.emplace_back(std::move(location));
